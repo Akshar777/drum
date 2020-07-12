@@ -38,9 +38,18 @@ for (var i = 0; i < document.querySelectorAll(".drum").length; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     var buttonInnerHtml=this.innerHTML;
     makeSound(buttonInnerHtml);
-
+    buttonAnimation(buttonInnerHtml);
   });
 }
+
 document.addEventListener("keydown",function(event){
   makeSound(event.key);
+  buttonAnimation(event.key);
 });
+
+function buttonAnimation(btn){
+  document.querySelector('.'+btn).classList.add("pressed");
+  setTimeout(function(){
+    document.querySelector('.'+btn).classList.remove("pressed")
+  },100);
+}
